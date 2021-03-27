@@ -10,6 +10,7 @@
 <html>
     <head>
         <title>List of the Customers</title>
+        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css"/>
     </head>
     <body>
         <div id="wrapper">
