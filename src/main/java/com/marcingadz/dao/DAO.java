@@ -7,4 +7,5 @@ public interface DAO<T> {
     List<T> getList();
     void update(T obj);
     void delete(T obj);
+    void add(T obj);
 }

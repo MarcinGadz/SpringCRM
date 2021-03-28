@@ -1,11 +1,13 @@
 package com.marcingadz.controller;
 
-import com.marcingadz.dao.CustomerDAO;
-import com.marcingadz.dao.DAO;
 import com.marcingadz.entity.Customer;
+import com.marcingadz.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -13,16 +15,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    private final DAO<Customer> dao;
+    private final Service<Customer> customerService;
 
     @Autowired
-    public CustomerController(DAO<Customer> dao) {
-        this.dao = dao;
+    public CustomerController(Service<Customer> customerService) {
+        this.customerService = customerService;
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String listCustomers(Model model) {
-        model.addAttribute("customers",dao.getList());
+        model.addAttribute("customers",customerService.getList());
         return "list-customers";
+    }
+
+    @GetMapping("/showAddForm")
+    public String addCustomerForm(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "customer-form";
+    }
+
+    @PostMapping("/saveCustomer")
+    public String saveCustomer(@ModelAttribute("customer")Customer customer) {
+        customerService.add(customer);
+        return "redirect:/customer/list";
     }
 }

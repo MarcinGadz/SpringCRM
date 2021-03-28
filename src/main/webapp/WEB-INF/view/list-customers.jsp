@@ -19,17 +19,21 @@
             </div>
             <div id="container">
                 <div id="content">
+                    <input class="addButton" type="button" value="Add new customer"
+                           onclick="window.location.href='showAddForm'; return false;">
                     <table>
                         <tr>
                             <th>First name</th>
                             <th>Last name</th>
                             <th>email</th>
+                            <th>action</th>
                         </tr>
                         <c:forEach var="customer" items="${customers}">
                             <tr>
                                 <td>${customer.firstName}</td>
                                 <td>${customer.lastName}</td>
                                 <td>${customer.email}</td>
+                                <td><a href="">Edit</a> </td>
                             </tr>
                         </c:forEach>
                     </table>

@@ -25,11 +25,17 @@ public class CustomerDAO implements DAO<Customer> {
     }
 
     @Override
-    @Transactional
     public List<Customer> getList() {
         Session session = sessionFactory.getCurrentSession();
-        Query<Customer> getCustomersQuery = session.createQuery("From Customer", Customer.class);
+        Query<Customer> getCustomersQuery = session.createQuery("From Customer order by lastName"
+                , Customer.class);
         return getCustomersQuery.getResultList();
+    }
+
+    @Override
+    public void add(Customer obj) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(obj);
     }
 
     @Override
