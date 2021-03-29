@@ -21,6 +21,8 @@
     Put data of new Customer:
     <%--@elvariable id="customer" type="Customer"--%>
     <form:form action="saveCustomer" modelAttribute="customer" method="post">
+        <!--To save that information-->
+        <form:hidden path="id"/>
         <label>First name:</label>
         <form:input path="firstName"/>
         <label>Last name:</label>

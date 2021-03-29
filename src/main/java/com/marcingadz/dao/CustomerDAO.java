@@ -20,8 +20,9 @@ public class CustomerDAO implements DAO<Customer> {
     }
 
     @Override
-    public Customer get() {
-        return null;
+    public Customer get(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Customer.class, id);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class CustomerDAO implements DAO<Customer> {
     @Override
     public void add(Customer obj) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(obj);
+        session.saveOrUpdate(obj);
     }
 
     @Override
@@ -44,7 +45,9 @@ public class CustomerDAO implements DAO<Customer> {
     }
 
     @Override
-    public void delete(Customer obj) {
-
+    public void delete(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Customer c = session.get(Customer.class, id);
+        session.delete(c);
     }
 }

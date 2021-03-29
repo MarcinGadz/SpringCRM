@@ -30,4 +30,16 @@ public class CustomerService implements com.marcingadz.service.Service<Customer>
     public void add(Customer obj) {
         dao.add(obj);
     }
+
+    @Override
+    @Transactional
+    public Customer get(int id) {
+        return dao.get(id);
+    }
+
+    @Override
+    @Transactional
+    public void delete(int id) {
+        dao.delete(id);
+    }
 }
