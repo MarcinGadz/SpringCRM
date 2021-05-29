@@ -42,7 +42,7 @@ public class Customer {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstNae) {
         this.firstName = firstName;
     }
 
