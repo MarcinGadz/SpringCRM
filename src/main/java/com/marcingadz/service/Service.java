@@ -6,6 +6,6 @@ public interface Service<T> {
     public List<T> getList();
     public void add(T obj);
     public T get(int id);
-
+    public void update(T obj);
     void delete(int id);
 }

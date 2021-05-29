@@ -41,7 +41,8 @@ public class CustomerDAO implements DAO<Customer> {
 
     @Override
     public void update(Customer obj) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(obj);
     }
 
     @Override
