@@ -26,7 +26,11 @@ public class RESTApiController {
     @GetMapping("/customers/{id}")
     public Customer getCustomer(@PathVariable int id) {
         //TODO secure for passing wrong id
-        return customerService.get(id);
+        Customer c = customerService.get(id);
+        if (c == null) {
+            throw new CustomerNotFoundException("Customer with specified id does not exist. id=" + id);
+        }
+        return c;
     }
 
     @PutMapping("/customers/{id}")
