@@ -33,6 +33,16 @@ public class RESTApiController {
         return c;
     }
 
+    @PostMapping("/customers")
+    public Customer addCustomer(@RequestBody Customer c) {
+        //TODO check why firstName is always null
+        System.out.println(c.getFirstName());
+        System.out.println(c.getLastName());
+        c.setId(0);
+        customerService.add(c);
+        return c;
+    }
+
     @PutMapping("/customers/{id}")
     public Customer editCustomer(@PathVariable int id) {
         //TODO
