@@ -25,7 +25,6 @@ public class RESTApiController {
 
     @GetMapping("/customers/{id}")
     public Customer getCustomer(@PathVariable int id) {
-        //TODO secure for passing wrong id
         Customer c = customerService.get(id);
         if (c == null) {
             throw new CustomerNotFoundException("Customer with specified id does not exist. id=" + id);
@@ -35,18 +34,15 @@ public class RESTApiController {
 
     @PostMapping("/customers")
     public Customer addCustomer(@RequestBody Customer c) {
-        //TODO check why firstName is always null
-        System.out.println(c.getFirstName());
-        System.out.println(c.getLastName());
         c.setId(0);
         customerService.add(c);
         return c;
     }
 
-    @PutMapping("/customers/{id}")
-    public Customer editCustomer(@PathVariable int id) {
-        //TODO
-        return null;
+    @PutMapping("/customers")
+    public Customer editCustomer(@RequestBody Customer c) {
+        customerService.add(c);
+        return c;
     }
 
     @DeleteMapping("/customers/{id}")
