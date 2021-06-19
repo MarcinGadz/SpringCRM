@@ -42,7 +42,7 @@
                                 <td>
                                     <a href="${updateURL}">Edit</a>
                                     |
-                                    <a href="${deleteURL}" onclick="return confirm('Ar ju siur?')">Delete</a>
+                                    <a href="${deleteURL}" onclick="return confirm('Are you sure?')">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>
