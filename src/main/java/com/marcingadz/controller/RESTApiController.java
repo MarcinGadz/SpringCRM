@@ -46,7 +46,12 @@ public class RESTApiController {
     }
 
     @DeleteMapping("/customers/{id}")
-    public void deleteCustomer(@PathVariable int id) {
+    public String deleteCustomer(@PathVariable int id) {
+        Customer c = customerService.get(id);
+        if (c == null) {
+            throw new CustomerNotFoundException("Customer not found - id: " + id);
+        }
         customerService.delete(id);
+        return "Deleted id: " + id;
     }
 }
